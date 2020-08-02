@@ -21,10 +21,15 @@ app.use('/start', register)
 app.use('/songs', songs)
 app.use('/users', users)
 app.use('/api/get/', express.static(path.join(__dirname )));
+app.use(express.static(path.join(__dirname, 'public')));
 
 var server = app.listen(3030, () => {
   console.log("listen On port number 3030");
 });
+
+app.get('/', (req, res) =>{
+  res.send('success')
+})
 
 var io = socket(server);
 
