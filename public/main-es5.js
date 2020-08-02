@@ -138,7 +138,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Network;
     });
 
-    var Network = 'http://localhost:3030';
+    var Network = 'https://jiviz.com';
     /***/
   },
 

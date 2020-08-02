@@ -76,7 +76,7 @@ AuthGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjecta
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Network", function() { return Network; });
-var Network = 'http://localhost:3030';
+var Network = 'https://jiviz.com';
 
 
 /***/ }),
