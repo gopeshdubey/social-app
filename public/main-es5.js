@@ -138,7 +138,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Network;
     });
 
-    var Network = 'https://jiviz.com';
+    var Network = 'https://jiviz.in';
     /***/
   },
 
@@ -337,6 +337,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       component: _components_friends_list_friends_list_component__WEBPACK_IMPORTED_MODULE_18__["FriendsListComponent"]
     }, {
       path: 'login',
+      component: _main_frame_main_frame_component__WEBPACK_IMPORTED_MODULE_5__["MainFrameComponent"]
+    }, {
+      path: 'query_data?id=',
       component: _main_frame_main_frame_component__WEBPACK_IMPORTED_MODULE_5__["MainFrameComponent"]
     }, {
       path: '**',
@@ -9113,11 +9116,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var m_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+        var m_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](m_r8.chats.message);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](m_r9.chats.message);
       }
     }
 
@@ -9171,15 +9174,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var m_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+        var m_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](m_r8.chats.message);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](m_r9.chats.message);
       }
     }
 
-    function ChatsContentComponent_div_10_div_22_li_3_Template(rf, ctx) {
+    function ChatsContentComponent_div_10_div_22_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 75);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, ChatsContentComponent_div_10_div_22_li_1_Template, 13, 1, "li", 76);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ChatsContentComponent_div_10_div_22_li_2_Template, 13, 1, "li", 77);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var m_r9 = ctx.$implicit;
+
+        var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", m_r9.chats.user_id == ctx_r7.user_id);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", m_r9.chats.user_id == ctx_r7.reciever_id);
+      }
+    }
+
+    function ChatsContentComponent_div_10_div_23_li_1_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li", 78);
 
@@ -9229,15 +9258,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var m_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+        var m_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](m_r8.reply);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](m_r14.reply);
       }
     }
 
-    function ChatsContentComponent_div_10_div_22_li_4_Template(rf, ctx) {
+    function ChatsContentComponent_div_10_div_23_li_2_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li");
 
@@ -9287,55 +9316,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var m_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+        var m_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](m_r8.message);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](m_r14.message);
       }
     }
 
-    function ChatsContentComponent_div_10_div_22_Template(rf, ctx) {
+    function ChatsContentComponent_div_10_div_23_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 75);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, ChatsContentComponent_div_10_div_22_li_1_Template, 13, 1, "li", 76);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, ChatsContentComponent_div_10_div_23_li_1_Template, 13, 1, "li", 76);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ChatsContentComponent_div_10_div_22_li_2_Template, 13, 1, "li", 77);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, ChatsContentComponent_div_10_div_22_li_3_Template, 13, 1, "li", 76);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ChatsContentComponent_div_10_div_22_li_4_Template, 13, 1, "li", 77);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ChatsContentComponent_div_10_div_23_li_2_Template, 13, 1, "li", 77);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var m_r8 = ctx.$implicit;
-
-        var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+        var m_r14 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", m_r8.user_id == ctx_r7.user_id);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", m_r14.reply);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", m_r8.user_id == ctx_r7.reciever_id);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", m_r8.reply);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", m_r8.message);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", m_r14.message);
       }
     }
 
     function ChatsContentComponent_div_10_Template(rf, ctx) {
       if (rf & 1) {
-        var _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+        var _r20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 63);
 
@@ -9387,7 +9402,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "span", 21);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "Hi James! Please remember to buy the food for tomorrow! I\u2019m gonna be handling the gifts and Jake\u2019s gonna get the drinks");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
@@ -9405,51 +9420,53 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](22, ChatsContentComponent_div_10_div_22_Template, 5, 4, "div", 70);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](22, ChatsContentComponent_div_10_div_22_Template, 3, 2, "div", 70);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](23, ChatsContentComponent_div_10_div_23_Template, 3, 2, "div", 70);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](23, "form");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "form");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "div", 71);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](25, "div", 71);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](25, "textarea", 72);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "textarea", 72);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function ChatsContentComponent_div_10_Template_textarea_ngModelChange_25_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r18);
-
-          var ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
-
-          return ctx_r17.message = $event;
-        })("keyup.enter", function ChatsContentComponent_div_10_Template_textarea_keyup_enter_25_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function ChatsContentComponent_div_10_Template_textarea_ngModelChange_26_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r20);
 
           var ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          return ctx_r19.sendMessage();
+          return ctx_r19.message = $event;
+        })("keyup.enter", function ChatsContentComponent_div_10_Template_textarea_keyup_enter_26_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r20);
+
+          var ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+
+          return ctx_r21.sendMessage();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "div", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "div", 29);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "a", 73);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](28, "a", 73);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ChatsContentComponent_div_10_Template_a_click_27_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ChatsContentComponent_div_10_Template_a_click_28_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r20);
 
-          var ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+          var ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
 
-          return ctx_r20.sendMessage();
+          return ctx_r22.sendMessage();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](28, "svg", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](29, "svg", 31);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](29, "use", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](30, "use", 32);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
@@ -9457,55 +9474,55 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceHTML"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](30, "div", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](31, "div", 33);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](31, "svg", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](32, "svg", 34);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](32, "use", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](33, "use", 35);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceHTML"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](33, "ul", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "ul", 36);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "li");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](35, "li");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](35, "a", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "a", 37);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](36, "img", 38);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](37, "li");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](38, "a", 37);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](39, "img", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](37, "img", 38);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](40, "li");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](38, "li");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](41, "a", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](39, "a", 37);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](42, "img", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](40, "img", 39);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](41, "li");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](42, "a", 37);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](43, "img", 40);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](43, "li");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](44, "li");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](44, "a", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](45, "a", 37);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](45, "img", 74);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](46, "img", 74);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
@@ -9537,7 +9554,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("scrollTop", _r6.scrollHeight);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("Hi James! Please remember to buy the food for tomorrow! I\u2019m gonna be handling the gifts and Jake\u2019s gonna get the drinks ", ctx_r1.user_id, "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r1.stored_chat);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r1.output);
 
@@ -9557,6 +9582,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.messageArray = [];
         this.usersArray = [];
         this.output = [];
+        this.stored_chat = [];
         this.showChatOption = false;
         this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_3__["connect"]('http://localhost:3030');
       }
@@ -9567,7 +9593,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           console.log('all data of socket :::::', this.socketAddress, '------------------------', this.reciever_id, this.message);
           this.loginService.emit('chat', {
             address: this.socketAddress,
-            user_id: jwt_decode__WEBPACK_IMPORTED_MODULE_2__(localStorage.getItem('user_token')).id,
+            user_id: this.user_id,
             reciever_id: this.reciever_id,
             message: this.message
           });
@@ -9589,9 +9615,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             user_id: this.user_id,
             reciever_id: reciever_id
           };
-          this.output = [];
+          this.stored_chat = [];
           this.loginService.getAllChats(data_of_post).subscribe(function (data) {
-            _this2.output = data.result;
+            _this2.stored_chat = data.result;
           }, function (err) {
             console.log('error :::::', err);
           });
@@ -9600,7 +9626,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "updateMessage",
         value: function updateMessage(data) {
           this.message = '';
-          console.log('data ----------------------------------:::::', data);
           if (!!!data) return;
           this.output.push(data);
         }
@@ -9612,7 +9637,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "messageTyping",
         value: function messageTyping() {
-          console.log('name :::::', this.username);
           this.loginService.emit('typing', this.username);
         }
       }, {
@@ -9620,7 +9644,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this3 = this;
 
-          console.log('token :::::', jwt_decode__WEBPACK_IMPORTED_MODULE_2__(localStorage.getItem('user_token')));
           this.user_id = jwt_decode__WEBPACK_IMPORTED_MODULE_2__(localStorage.getItem('user_token')).id;
           setInterval(function () {
             _this3.loginService.sharable.subscribe(function (status) {
@@ -9637,15 +9660,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                       case 2:
                         this.address = _context.sent;
-                        console.log(this.address.id);
                         dataOfUpdate = {
                           email: jwt_decode__WEBPACK_IMPORTED_MODULE_2__(localStorage.getItem('user_token')).id,
                           socket_id: this.address.id
                         };
-                        console.log('data of up :::::', dataOfUpdate);
                         this.loginService.updateSocket(dataOfUpdate).subscribe(function (data) {
-                          console.log('data of update :::::', data);
-
                           _this4.usersService.getAllUsers().subscribe(function (data) {
                             _this4.usersArray = data.result;
                           }, function (err) {
@@ -9655,7 +9674,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           console.log('error in updat socket id :::::', err);
                         });
 
-                      case 7:
+                      case 5:
                       case "end":
                         return _context.stop();
                     }
@@ -9666,9 +9685,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               console.log('error in status of songs :::::', err);
             });
           }, 3000);
-          this.loginService.listen('typing').subscribe(function (data) {
-            return _this3.updateFeedback(data);
-          });
+          setInterval(function () {
+            _this3.loginService.listen('chat').subscribe(function (data) {
+              console.log('data of chats :::::', data);
+            }, function (err) {
+              console.log('error in chats :::::', err);
+            });
+          }, 3000); // this.loginService
+          //   .listen('typing')
+          //   .subscribe((data) => this.updateFeedback(data));
+
           this.loginService.listen('chat').subscribe(function (data) {
             return _this3.updateMessage(data);
           });
@@ -9722,7 +9748,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, ChatsContentComponent_ul_9_Template, 24, 1, "ul", 8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, ChatsContentComponent_div_10_Template, 46, 4, "div", 9);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, ChatsContentComponent_div_10_Template, 47, 6, "div", 9);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
@@ -17206,11 +17232,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     var LandingPageComponent = /*#__PURE__*/function () {
-      function LandingPageComponent(loginServices, router, loadJsService) {
+      function LandingPageComponent(loginServices, router, route, loadJsService) {
         _classCallCheck(this, LandingPageComponent);
 
         this.loginServices = loginServices;
         this.router = router;
+        this.route = route;
         this.loadJsService = loadJsService;
         this.gender = 'MA';
         this.optionsCheckboxes = false;
@@ -17291,7 +17318,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     };
                     console.log('refer transfer :::::', _this13.referral);
 
-                    if (_this13.referral != "") {
+                    if (_this13.referral != null) {
                       var dataOfTransfer = {
                         private_key: _this13.referral
                       };
@@ -17326,14 +17353,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          var _this14 = this;
+
+          this.route.queryParams.subscribe(function (params) {
+            if (Object.keys(params).length > 0) {
+              _this14.referral = params.id;
+            } else {
+              _this14.referral = null;
+            }
+
+            console.log('params :::::', _this14.referral);
+          }, function (err) {
+            console.log('error in getting req.query :::::', err);
+          });
+        }
       }]);
 
       return LandingPageComponent;
     }();
 
     LandingPageComponent.ɵfac = function LandingPageComponent_Factory(t) {
-      return new (t || LandingPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_login_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_3__["LoadJsService"]));
+      return new (t || LandingPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_login_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_3__["LoadJsService"]));
     };
 
     LandingPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -20040,6 +20081,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
         }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+        }, {
           type: _services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_3__["LoadJsService"]
         }];
       }, null);
@@ -22414,10 +22457,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this14 = this;
+          var _this15 = this;
 
           this.openPlaylistService.share.subscribe(function (status) {
-            _this14.statusOfSongs = status;
+            _this15.statusOfSongs = status;
           }, function (err) {
             console.log('error in status of songs :::::', err);
           });
@@ -26432,11 +26475,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ProfileHeaderComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this15 = this;
+          var _this16 = this;
 
           var tokens = jwt_decode__WEBPACK_IMPORTED_MODULE_1__(localStorage.getItem('user_token'));
           this.loginService.getUserDetails(tokens.id).subscribe(function (data) {
-            _this15.userArray = data.result;
+            _this16.userArray = data.result;
           }, function (err) {
             console.log('error :::::', err);
           });
@@ -26781,12 +26824,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ProfileLeftComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this16 = this;
+          var _this17 = this;
 
           var tokens = jwt_decode__WEBPACK_IMPORTED_MODULE_1__(localStorage.getItem('user_token'));
           console.log('token :::::', tokens);
           this.loginService.getUserDetails(tokens.id).subscribe(function (data) {
-            _this16.userArray = data.result;
+            _this17.userArray = data.result;
           }, function (err) {
             console.log('error :::::', err);
           });
@@ -27826,12 +27869,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ProfileRightComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this17 = this;
+          var _this18 = this;
 
           var tokens = jwt_decode__WEBPACK_IMPORTED_MODULE_1__(localStorage.getItem('user_token'));
           this.loginService.getUserDetails(tokens.id).subscribe(function (data) {
-            _this17.friend_count = data.result[0].friends.length;
-            _this17.userArray = data.result;
+            _this18.friend_count = data.result[0].friends.length;
+            _this18.userArray = data.result;
           }, function (err) {
             console.log('error :::::', err);
           });
@@ -28617,15 +28660,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this18 = this;
+          var _this19 = this;
 
           // ===================================== GET DATA FROM TOKEN ========================
           var tokens = jwt_decode__WEBPACK_IMPORTED_MODULE_1__(localStorage.getItem('user_token')); // ================================== GET USER DATA ================================
 
           this.loginService.getUserDetails(tokens.id).subscribe(function (data) {
-            _this18.loginService.referralLink(data.result[0].private_key).subscribe(function (data_of_refer) {
+            _this19.loginService.referralLink(data.result[0].private_key).subscribe(function (data_of_refer) {
               console.log('referral link :::::', data_of_refer);
-              _this18.referral_link = data_of_refer.result;
+              _this19.referral_link = data_of_refer.result;
             }, function (error) {
               console.log('Error in referral link creations:::::', error);
             });
@@ -30202,11 +30245,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this19 = this;
+          var _this20 = this;
 
           this.openPlaylistService.sharable.subscribe(function (status) {
             console.log('status of init :::::', status);
-            _this19.statusOfSongs = status;
+            _this20.statusOfSongs = status;
           }, function (err) {
             console.log('error in status of songs :::::', err);
           });
@@ -32755,11 +32798,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this20 = this;
+          var _this21 = this;
 
           this.loadJsService.loadJs();
           this.openPlaylistService.share.subscribe(function (status) {
-            _this20.statusOfSongs = status;
+            _this21.statusOfSongs = status;
           }, function (err) {
             console.log('error in status of songs :::::', err);
           });
@@ -39475,26 +39518,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.sharable = this.emailService.asObservable();
         this.loginServices = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
         this.shareLogin = this.loginServices.asObservable();
-        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_3__["connect"]('https://jiviz.com');
+        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_3__["connect"]('https://jiviz.in');
       }
 
       _createClass(LoginService, [{
         key: "socketId",
         value: function socketId() {
-          var _this21 = this;
+          var _this22 = this;
 
           return this.socket.on('connect', function () {
-            return _this21.socket.id;
+            return _this22.socket.id;
           });
         }
       }, {
         key: "listen",
         value: function listen(eventname) {
-          var _this22 = this;
+          var _this23 = this;
 
-          console.log('event name :::::', eventname);
           return new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (subscribe) {
-            _this22.socket.on(eventname, function (data) {
+            _this23.socket.on(eventname, function (data) {
               subscribe.next(data);
             });
           });
@@ -39579,9 +39621,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "referralLink",
-        value: function referralLink(id) {
+        value: function referralLink(referral_id) {
           var header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
-          return this.httpClient.get(_Domain_domain__WEBPACK_IMPORTED_MODULE_4__["Network"] + '/' + id, {
+          return this.httpClient.get(_Domain_domain__WEBPACK_IMPORTED_MODULE_4__["Network"] + '/link/' + referral_id, {
             headers: header
           });
         }
