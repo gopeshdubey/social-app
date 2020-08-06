@@ -8846,41 +8846,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var socket_io_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! socket.io-client */
-    "./node_modules/socket.io-client/lib/index.js");
-    /* harmony import */
-
-
-    var socket_io_client__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_3__);
-    /* harmony import */
-
-
-    var _services_login_login_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _services_login_login_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../../../services/login/login.service */
     "./src/app/services/login/login.service.ts");
     /* harmony import */
 
 
-    var _services_users_users_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _services_users_users_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../../../services/users/users.service */
     "./src/app/services/users/users.service.ts");
     /* harmony import */
 
 
-    var _services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../../../services/loadjs/load-js.service */
     "./src/app/services/loadjs/load-js.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 
@@ -9584,7 +9574,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.output = [];
         this.stored_chat = [];
         this.showChatOption = false;
-        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_3__["connect"]('http://localhost:3030');
       }
 
       _createClass(ChatsContentComponent, [{
@@ -9684,18 +9673,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }, function (err) {
               console.log('error in status of songs :::::', err);
             });
-          }, 3000);
-          setInterval(function () {
-            _this3.loginService.listen('chat').subscribe(function (data) {
-              console.log('data of chats :::::', data);
-            }, function (err) {
-              console.log('error in chats :::::', err);
-            });
           }, 3000); // this.loginService
           //   .listen('typing')
           //   .subscribe((data) => this.updateFeedback(data));
 
-          this.loginService.listen('chat').subscribe(function (data) {
+          this.loginService.listen('recievedMessage').subscribe(function (data) {
             return _this3.updateMessage(data);
           });
         }
@@ -9705,7 +9687,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     ChatsContentComponent.ɵfac = function ChatsContentComponent_Factory(t) {
-      return new (t || ChatsContentComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_login_login_service__WEBPACK_IMPORTED_MODULE_4__["LoginService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_users_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_6__["LoadJsService"]));
+      return new (t || ChatsContentComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_login_login_service__WEBPACK_IMPORTED_MODULE_3__["LoginService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_users_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_5__["LoadJsService"]));
     };
 
     ChatsContentComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
@@ -10121,7 +10103,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.showChatOption);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgForm"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgModel"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgForm"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgModel"]],
       styles: [".chat-message-items[_ngcontent-%COMP%]{\r\n    border-bottom: none;\r\n    float: right;\r\n    background-color: #7c5ac2;\r\n    color: #fff;\r\n    padding: 13px;\r\n    margin-top: 0;\r\n    border-radius: 10px;\r\n    margin-bottom: 5px;\r\n    font-size: 12px;\r\n}\r\n\r\n.author-thumbs[_ngcontent-%COMP%]{\r\n    float: right;\r\n}\r\n\r\n.author-thumbs[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\r\n    border-radius: 100%;\r\n    overflow: hidden;\r\n    max-width: unset;\r\n    display: block;\r\n}\r\n\r\n.mCustomScrollbar[_ngcontent-%COMP%] {\r\n    background: white;\r\n    overflow: scroll !important;\r\n}\r\n\r\n[_ngcontent-%COMP%]::-webkit-scrollbar { width: 0 !important }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jaGF0cy9jaGF0cy1jb250ZW50L2NoYXRzLWNvbnRlbnQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1oseUJBQXlCO0lBQ3pCLFdBQVc7SUFDWCxhQUFhO0lBQ2IsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQixrQkFBa0I7SUFDbEIsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxtQkFBbUI7SUFDbkIsZ0JBQWdCO0lBQ2hCLGdCQUFnQjtJQUNoQixjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksaUJBQWlCO0lBQ2pCLDJCQUEyQjtBQUMvQjs7QUFBRSxzQkFBc0Isb0JBQW9CIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9jaGF0cy9jaGF0cy1jb250ZW50L2NoYXRzLWNvbnRlbnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jaGF0LW1lc3NhZ2UtaXRlbXN7XHJcbiAgICBib3JkZXItYm90dG9tOiBub25lO1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzdjNWFjMjtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgcGFkZGluZzogMTNweDtcclxuICAgIG1hcmdpbi10b3A6IDA7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgbWFyZ2luLWJvdHRvbTogNXB4O1xyXG4gICAgZm9udC1zaXplOiAxMnB4O1xyXG59XHJcblxyXG4uYXV0aG9yLXRodW1ic3tcclxuICAgIGZsb2F0OiByaWdodDtcclxufVxyXG5cclxuLmF1dGhvci10aHVtYnMgaW1nIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gICAgbWF4LXdpZHRoOiB1bnNldDtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcblxyXG4ubUN1c3RvbVNjcm9sbGJhciB7XHJcbiAgICBiYWNrZ3JvdW5kOiB3aGl0ZTtcclxuICAgIG92ZXJmbG93OiBzY3JvbGwgIWltcG9ydGFudDtcclxufSA6Oi13ZWJraXQtc2Nyb2xsYmFyIHsgd2lkdGg6IDAgIWltcG9ydGFudCB9Il19 */"]
     });
     /*@__PURE__*/
@@ -10136,11 +10118,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _services_login_login_service__WEBPACK_IMPORTED_MODULE_4__["LoginService"]
+          type: _services_login_login_service__WEBPACK_IMPORTED_MODULE_3__["LoginService"]
         }, {
-          type: _services_users_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"]
+          type: _services_users_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"]
         }, {
-          type: _services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_6__["LoadJsService"]
+          type: _services_loadjs_load_js_service__WEBPACK_IMPORTED_MODULE_5__["LoadJsService"]
         }];
       }, null);
     })();

@@ -40,22 +40,18 @@ var server = app.listen(3030, () => {
 var io = socket(server);
 
 io.on("connection", (socket) => {
-
-  app.get('/socketId', (req, res) => {
-    res.json({
-      success: 200,
-      message: 'success',
-      result: socket.id
-    })
-  })
-  
+  console.log('A user has connected to the server.');
+  console.log('all connection :::::', socket.id);
   socket.on("typing", (data) => {
     socket.broadcast.emit("typing", data);
   });
 
+  // This is the user's unique ID to be used on ng-chat as the connected user.
+  socket.emit("generatedUserId", socket.id);
+
   socket.on('chat', (data) => {
-    console.log('message data :::::', data);
-    socket.in(data.address).emit('chat', data)
+    console.log('data :::::', data);
+    io.to(data.address).emit('recievedMessage', data)
     try {
       chats.insertChat(data.user_id, data.reciever_id, data.message)
     } catch (error) {
