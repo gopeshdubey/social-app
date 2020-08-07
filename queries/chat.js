@@ -107,6 +107,14 @@ const getAllChats = async (user_id, reciever_id) => {
   }
 };
 
+const get_all_chats_of_user = async (user_id) => {
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
 module.exports = {
   insertChat,
   getAllChats,

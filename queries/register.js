@@ -1,7 +1,7 @@
 const Register = require("../Model/users");
 const friendRequest = require("../Model/friendRequest");
 var mongoose = require("mongoose");
-var encryption = require('../utilities/encryption')
+var encryption = require("../utilities/encryption");
 var ObjectId = mongoose.Types.ObjectId;
 
 var ObjectData = {};
@@ -41,15 +41,16 @@ ObjectData.login = async (email, password) => {
     Register.find({ email: email }, async (err, data) => {
       if (err) reject(err);
       else {
+        console.log("data :::::", data);
         if (data.length > 0) {
           rehash = await encryption.decryptPassword(password, data[0].password);
           if (!rehash) {
-            reject("Password incorrect")
+            reject("Password incorrect");
           } else {
-            resolve(data)
+            resolve(data);
           }
         } else {
-          reject("Not registered")
+          reject("Not registered");
         }
       }
     });
@@ -157,8 +158,10 @@ ObjectData.addFriend = async (
 ) => {
   try {
     var err_msg = "";
+    // console.log('entern in added friend',user_id);
     const frienddata = await Register.find({ _id: ObjectId(friend_id) });
     if (frienddata != "" || frienddata != null || frienddata.length > 0) {
+      // console.log('entern in frienddata',frienddata);
       const userdata = await Register.find({ _id: ObjectId(user_id) });
       if (userdata != "" || userdata != null || userdata.length > 0) {
         const friendAddedData = await Register.updateOne(
@@ -177,32 +180,52 @@ ObjectData.addFriend = async (
             },
           }
         );
+        const newFriendAddedData = await Register.updateOne(
+          { _id: ObjectId(friend_id) },
+          {
+            $push: {
+              friends: [
+                {
+                  join_at: Date.now().toString(),
+                  friend_id: ObjectId(user_id),
+                  display_name: userdata[0].first_name,
+                  friendSocketId: userdata[0].socket_id,
+                  friendImageUrl: userdata[0].profile_image_url,
+                },
+              ],
+            },
+          }
+        );
+
         if (
-          friendAddedData != "" ||
-          friendAddedData != null ||
-          friendAddedData.nModified != 0 ||
-          friendAddedData.length > 0
+          friendAddedData.nModified == 1 &&
+          newFriendAddedData.nModified == 1
         ) {
+          // console.log("hellooooooo",userdata);
           const updateRequestStatus = await friendRequest.updateOne(
             { reciver_id: ObjectId(user_id), sender_id: ObjectId(friend_id) },
             { $set: { status: "accepted" } }
           );
-          console.log("update :::::", updateRequestStatus);
+          console.log(updateRequestStatus);
           if (updateRequestStatus.nModified == 1) {
+            // console.log('updated',updateRequestStatus);
             return userdata;
           } else {
             err_msg = "Request Status Not Updated";
             return err_msg;
           }
         } else {
+          console.log("Friend Not Added");
           err_msg = "Friend Not Added";
           return err_msg;
         }
       } else {
+        console.log("user not exist");
         err_msg = "Friend Not Added";
         return err_msg;
       }
     } else {
+      console.log("user friend not exist");
       err_msg = "Friend Not Added";
       return err_msg;
     }
@@ -404,6 +427,23 @@ ObjectData.givePoints = async (private_key) => {
       console.log("Key not matched");
       var msg = "Key not matched";
       return msg;
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+ObjectData.friendSuggetion = async (user_id) => {
+  try {
+    var err_msg = "";
+    const friendData = await Register.find({
+      "friends.friend_id": { $ne: ObjectId(user_id) },
+    });
+    if (friendData.length != 0) {
+      return friendData;
+    } else {
+      err_msg = "Problem in friend suggestion";
+      return err_msg;
     }
   } catch (error) {
     return error;

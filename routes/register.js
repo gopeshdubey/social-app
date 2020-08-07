@@ -22,5 +22,6 @@ router.post('/friendRequest',controller.friendRequest)
 router.post('/showFriendRequests',controller.showFriendRequests)
 router.post('/generateprivateKey',controller.generateprivateKey)
 router.post('/givePoints',controller.givePoints)
+router.post('/friendSuggetion',controller.friendSuggetion)
 
 module.exports = router;

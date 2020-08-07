@@ -341,6 +341,21 @@ const givePoints = async (req, res) => {
   }
 };
 
+const friendSuggetion = async (req,res)=>{
+  try {
+    var user_id = req.body._id;
+    var friends = await registerData.friendSuggetion(user_id)
+    res.json({code: 200, message: "Friend Showed successfully", result: friends})
+  } catch (error) {
+    console.log('error :::::', error);
+    res.json({
+      code: 400,
+      message: "error",
+      error: error,
+    });
+  }
+}
+
 module.exports = {
   register,
   login,
@@ -354,5 +369,6 @@ module.exports = {
   getUserDeatils,
   uploadProfile,
   generateprivateKey,
-  givePoints
+  givePoints,
+  friendSuggetion
 };
