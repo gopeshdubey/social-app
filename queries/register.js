@@ -1,7 +1,10 @@
 const Register = require("../Model/users");
+const like = require("../Model/like");
 const friendRequest = require("../Model/friendRequest");
+const stat = require("../Model/status");
 var mongoose = require("mongoose");
 var encryption = require("../utilities/encryption");
+const likes = require("../Model/like");
 var ObjectId = mongoose.Types.ObjectId;
 
 var ObjectData = {};
@@ -201,14 +204,12 @@ ObjectData.addFriend = async (
           friendAddedData.nModified == 1 &&
           newFriendAddedData.nModified == 1
         ) {
-          // console.log("hellooooooo",userdata);
           const updateRequestStatus = await friendRequest.updateOne(
             { reciver_id: ObjectId(user_id), sender_id: ObjectId(friend_id) },
             { $set: { status: "accepted" } }
           );
           console.log(updateRequestStatus);
           if (updateRequestStatus.nModified == 1) {
-            // console.log('updated',updateRequestStatus);
             return userdata;
           } else {
             err_msg = "Request Status Not Updated";
@@ -355,6 +356,20 @@ ObjectData.upload_profile = async (id, link) => {
   }
 };
 
+ObjectData.upload_header_profile = async (id, link) => {
+  try {
+    var upload_image = await Register.updateOne(
+      { _id: ObjectId(id) },
+      {
+        $set: { header_image_url: link },
+      }
+    );
+    return upload_image;
+  } catch (error) {
+    return error;
+  }
+};
+
 ObjectData.generateprivateKey = async (user_id, name) => {
   try {
     const userdata = await Register.find({ _id: ObjectId(user_id) });
@@ -436,9 +451,25 @@ ObjectData.givePoints = async (private_key) => {
 ObjectData.friendSuggetion = async (user_id) => {
   try {
     var err_msg = "";
-    const friendData = await Register.find({
-      "friends.friend_id": { $ne: ObjectId(user_id) },
-    });
+    const friendData = await Register.aggregate([
+      {
+        $match: {
+          $and: [
+            { _id: { $ne: ObjectId(user_id) } },
+            { "friends.friend_id": { $ne: ObjectId(user_id) } },
+          ],
+        },
+      },
+      {
+        $lookup: {
+          from: "friendrequests",
+          localField: "_id",
+          foreignField: "reciver_id",
+          as: "FriendRequests",
+        },
+      },
+      { $match: { "FriendRequests.sender_id": { $ne: ObjectId(user_id) } } },
+    ]);
     if (friendData.length != 0) {
       return friendData;
     } else {
@@ -450,7 +481,265 @@ ObjectData.friendSuggetion = async (user_id) => {
   }
 };
 
+ObjectData.addHobbyAndIntrests = async (user_id, description) => {
+  try {
+    var err_msg = "";
+    console.log(user_id);
+    const userdata = await Register.find({ _id: ObjectId(user_id) });
+    console.log("----------------", userdata);
+    if (userdata.length > 0) {
+      const addedData = await Register.updateOne(
+        { _id: ObjectId(user_id) },
+        { $push: { hobby_and_intrests: [{ description: description }] } }
+      );
+      if (addedData.nModified == 1) {
+        return addedData;
+      } else {
+        err_msg = "Hobby and Intrest are Not Updated";
+        return err_msg;
+      }
+    } else {
+      err_msg = "user not exist";
+      throw err_msg;
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+ObjectData.addEducationHIstory = async (
+  user_id,
+  description,
+  title,
+  duration
+) => {
+  try {
+    var err_msg = "";
+    const userdata = await Register.find({ _id: ObjectId(user_id) });
+    if (userdata.length > 0) {
+      const addedData = await Register.updateOne(
+        { _id: ObjectId(user_id) },
+        {
+          $push: {
+            education_history: [
+              { title: title, duration: duration, description: description },
+            ],
+          },
+        }
+      );
+      if (addedData.length != 0 || addedData.nModified == 1) {
+        return userdata;
+      } else {
+        err_msg = "Education History are Not Updated";
+        return err_msg;
+      }
+    } else {
+      console.log("user not exist");
+      err_msg = "user not exist";
+      return err_msg;
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+ObjectData.addEmploymentHIstory = async (
+  user_id,
+  description,
+  title,
+  duration
+) => {
+  try {
+    var err_msg = "";
+    const userdata = await Register.find({ _id: ObjectId(user_id) });
+    if (userdata.length > 0) {
+      const addedData = await Register.updateOne(
+        { _id: ObjectId(user_id) },
+        {
+          $push: {
+            employment_history: [
+              { title: title, duration: duration, description: description },
+            ],
+          },
+        }
+      );
+      if (addedData.length != 0 || addedData.nModified == 1) {
+        return userdata;
+      } else {
+        err_msg = "Employment History are Not Updated";
+        return err_msg;
+      }
+    } else {
+      console.log("user not exist");
+      err_msg = "user not exist";
+      return err_msg;
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+ObjectData.uploadStatus = async (user_id, status) => {
+  try {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    var date = new Date();
+    var getAm = date.getHours() >= 12 ? "pm" : "am";
+    var time =
+      date.getDate() +
+      " " +
+      monthNames[date.getMonth()] +
+      " " +
+      date.getFullYear() +
+      " " +
+      date.getHours() +
+      getAm;
+    console.log("time:::::", time);
+    var saveStatus = new stat({
+      user_id: ObjectId(user_id),
+      status: status,
+      created_at: time.toString(),
+      updated_at: Date.now().toString(),
+    });
+    const statusSaved = await saveStatus.save();
+
+    if (statusSaved.length != 0) {
+      const getStatus = await stat
+        .aggregate([
+          {
+            $lookup: {
+              from: "users",
+              localField: "user_id",
+              foreignField: "_id",
+              as: "user_data",
+            },
+          },
+        ])
+        .sort({ _id: -1 });
+      if (getStatus.length > 0) {
+        return getStatus;
+      } else {
+        var msg = "no status found";
+        return msg;
+      }
+    } else {
+      console.log("oops status not uploaded");
+      var msg = "oops status not uploaded";
+      return msg;
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+ObjectData.getAllStatus = async () => {
+  try {
+    const getStatus = await stat
+      .aggregate([
+        {
+          $lookup: {
+            from: "users",
+            localField: "user_id",
+            foreignField: "_id",
+            as: "user_data",
+          },
+        },
+      ])
+      .sort({ _id: -1 });
+    return getStatus;
+  } catch (error) {
+    return error;
+  }
+};
+
+ObjectData.uploadPost = async (user_id, post) => {
+  try {
+    console.log(user_id, post);
+    var savePosts = new posts({
+      user_id: ObjectId(user_id),
+      post: post,
+      created_at: Date.now().toString(),
+      updated_at: Date.now().toString(),
+    });
+    const savedPosts = await savePosts.save();
+    console.log(savedPosts);
+    if (savedPosts.length != 0) {
+      const getPosts = await posts.find().sort({ _id: -1 });
+      if (getPosts.length > 0) {
+        return getPosts;
+      } else {
+        var msg = "no posts found";
+        return msg;
+      }
+    } else {
+      console.log("oops posts not uploaded");
+      var msg = "oops posts not uploaded";
+      return msg;
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+ObjectData.addLikes = async (user_id, status_id, post_id, status) => {
+  try {
+    console.log('user_id', user_id);
+    var dataOfLikes = await new likes.aggregate([
+      {
+        $match: {
+          $and: [
+            { user_id: { $eq: ObjectId(user_id) } },
+            { status_id: { $eq: ObjectId(status_id) } },
+          ],
+        },
+      },
+    ]);
+    console.log("data :::::", dataOfLikes);
+    if (dataOfLikes) {
+      var updated_data = await likes.updateOne(
+        {
+          user_id: ObjectId(user_id),
+          status_id: ObjectId(status_id),
+        },
+        {
+          $set: { status: status },
+        }
+      );
+      return updated_data;
+    } else {
+      var like = new likes({
+        user_id: ObjectId(user_id),
+        status_id: ObjectId(status_id),
+        post_id: ObjectId(post_id),
+        status: status,
+        created_at: Date.now().toString(),
+        updated_at: Date.now().toString(),
+      });
+      const likeData = await like.save();
+      return likeData;
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = ObjectData;
+
+// ========================== CONVERT ARRAY TO BSON THEN PUT CONDITION =========================
+// {"$unwind":"$FriendRequests"},
+// {"$match": {"FriendRequests.sender_id" : { $ne: ObjectId("5f2581ad28a5f805c0d55e40") }}}
 
 // ================= GET DATA FROM ARRAY OF OBJECTS ===============================
 
@@ -461,3 +750,11 @@ module.exports = ObjectData;
 //     { "_id" : ObjectId("5f1f08dfe911fc1d7cdeab8b")},
 //     { $pull: { "friends": { "friend_id" : ObjectId("5f1f0c75e66bdc3ed4079f79") }}}
 // )
+
+// ========================== AND CONDITION WITH TWO CONDITION NE MEANS NOT EQUAL ==========
+// db.getCollection("users").find({
+//   $and: [
+//     { _id: { $ne: ObjectId("5f2581ad28a5f805c0d55e40") } },
+//     { "friends.friend_id": { $ne: ObjectId("5f2581ad28a5f805c0d55e40") } },
+//   ],
+// });

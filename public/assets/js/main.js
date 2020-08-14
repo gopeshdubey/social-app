@@ -111,7 +111,7 @@ var CRUMINA = {};
 		}
 
         $(this).toggleClass('active');
-        $(this).closest($sidebar).toggleClass('open');
+        // $(this).closest($sidebar).toggleClass('open');
         return false;
     });
 

@@ -18,6 +18,25 @@ const get_all_chats = async (req, res) => {
   }
 };
 
+const get_user_chats = async (req, res) => {
+  try {
+    var { user_id } = req.params;
+    var chat_data = await chats_controller.get_last_chats_of_user(user_id)
+    res.json({
+      code: 200,
+      message: "success",
+      result: chat_data,
+    });
+  } catch (error) {
+    res.json({
+      code: 400,
+      message: "error",
+      error: error,
+    });
+  }
+}
+
 module.exports = {
   get_all_chats,
+  get_user_chats
 };

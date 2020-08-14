@@ -25,13 +25,27 @@ var UserSchema = new Schema({
   religious_belief: {type: String, default: ""},
   political_incline: {type: String, default: ""},
   profile_image_url : {type: String, default: ""},
+  header_image_url : {type: String, default: ""},
   photos:[{type: String, default: ""}],// it is array of photo_url of the user.
   videos:[{type: String, default: ""}],// it is array of vedios_url of the user.
   posts:[{type: String, default: ""}], // it is array of posts_url of the user. we can also store text over there. 
   status:[{type: String, default: ""}], 
   private_key : {type: String, default: ""},
+  hobby_and_intrests:[{
+    description:{type: String, default: ""}
+   }],
   points: {type: Number, default: 0},
   benifit:{type: Boolean,default: false},
+  education_history: [{
+    title : {type : String, default: ""},
+    duration: {type: String, required: ""},
+    description : {type: String, default: ""}
+  }],
+  employment_history: [{
+    title : {type : String, default: ""},
+    duration: {type: String, required: ""},
+    description : {type: String, default: ""}
+  }],
 
   // for push notification on one signal
   notification_token : {type: Object, default: ""},

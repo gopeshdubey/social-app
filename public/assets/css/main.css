@@ -2120,7 +2120,7 @@ section {
           align-items: center;
   margin-bottom: 7px;
   height: 70px;
-  padding: 0 13px;
+  padding: 0 72px;
   position: relative;
   width: 100%; }
   .mobile-app-tabs .nav-link {
@@ -6553,8 +6553,8 @@ ol ol li {
     height: 18px; }
   .post-control-button .btn-control .olymp-share-icon {
     width: 24px; }
-  .post-control-button .btn-control:hover {
-    background-color: #ff5e3a; }
+  /* .post-control-button .btn-control:hover {
+    background-color: #ff5e3a; } */
   .post-control-button .btn-control.featured-post:hover {
     background-color: #ffc923; }
   .post-control-button .btn-control.has-i svg, .post-control-button .btn-control.has-i i {

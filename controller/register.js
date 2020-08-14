@@ -1,7 +1,7 @@
 const registerData = require("../queries/register");
 const encryption = require("../validation/jwtAuth");
 const store = require("../upload_file/delete_file");
-const encrypt = require('../utilities/encryption')
+const encrypt = require("../utilities/encryption");
 const path = require("path");
 
 // ===================================== REGISTER =============================
@@ -260,7 +260,7 @@ const showFriendRequests = async (req, res) => {
   }
 };
 
-// router to add profile pic of user by admin
+// router to add profile pic of user
 const uploadProfile = async (req, res) => {
   try {
     const { id } = req.params;
@@ -276,8 +276,52 @@ const uploadProfile = async (req, res) => {
     } else {
       var ext = path.extname(file.originalname);
       if (ext == ".png" || ext == ".jpg") {
-        var image = "http://localhost:3030/api/get/" + file.path;
+        let value = file.path;
+        var image = "https://jiviz.in/" + value.substring(8, value.length);
         var upload_data = await registerData.upload_profile(id, image);
+        res.json({
+          code: 200,
+          message: "success",
+          result: image,
+        });
+      } else {
+        store.deleteImage(req.file.path);
+        res.json({
+          code: 400,
+          result: "image cannot be uploaded",
+          message: "Image file is not jpg or png.",
+        });
+      }
+    }
+  } catch (error) {
+    store.deleteImage(file.path);
+    res.json({
+      code: 400,
+      result: error.sqlMessage,
+      message: "cannot upload image",
+    });
+  }
+};
+
+// router to add header pic of user
+const uploadHeaderProfile = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const file = req.file;
+    if (!file) {
+      var image = null;
+      res.status(200).json({
+        code: 200,
+        message: "Image uploaded successfully",
+        result: image,
+        filepath: image,
+      });
+    } else {
+      var ext = path.extname(file.originalname);
+      if (ext == ".png" || ext == ".jpg") {
+        let value = file.path;
+        var image = "https://jiviz.in/" + value.substring(8, value.length);
+        var upload_data = await registerData.upload_header_profile(id, image);
         res.json({
           code: 200,
           message: "success",
@@ -341,13 +385,103 @@ const givePoints = async (req, res) => {
   }
 };
 
-const friendSuggetion = async (req,res)=>{
+const friendSuggetion = async (req, res) => {
   try {
     var user_id = req.body._id;
-    var friends = await registerData.friendSuggetion(user_id)
-    res.json({code: 200, message: "Friend Showed successfully", result: friends})
+    var friends = await registerData.friendSuggetion(user_id);
+    res.json({
+      code: 200,
+      message: "Friend Showed successfully",
+      result: friends,
+    });
   } catch (error) {
-    console.log('error :::::', error);
+    console.log("error :::::", error);
+    res.json({
+      code: 400,
+      message: "error",
+      error: error,
+    });
+  }
+};
+
+const addHobbyAndInterest = async (req, res) => {
+  try {
+    var { user_id, description } = req.body;
+    var dataOfPost = await registerData.addHobbyAndIntrests(
+      user_id,
+      description
+    );
+    res.json({ code: 200, message: "Success", result: dataOfPost });
+  } catch (error) {
+    res.json({
+      code: 400,
+      message: "error",
+      error: error,
+    });
+  }
+};
+
+const addEducationHIstory = async (req, res) => {
+  try {
+    var user_id = req.body.user_id;
+    var description = req.body.description;
+    var title = req.body.title;
+    var duration = req.body.duration;
+    var educationHIstory = await registerData.addEducationHIstory(
+      user_id,
+      description,
+      title,
+      duration
+    );
+    res.json({
+      code: 200,
+      message: "educationHIstory added successfully",
+      result: educationHIstory,
+    });
+  } catch (error) {
+    res.json({
+      code: 400,
+      message: "error",
+      error: error,
+    });
+  }
+};
+
+const addEmploymentHIstory = async (req, res) => {
+  try {
+    var user_id = req.body.user_id;
+    var description = req.body.description;
+    var title = req.body.title;
+    var duration = req.body.duration;
+    var educationHIstory = await registerData.addEmploymentHIstory(
+      user_id,
+      description,
+      title,
+      duration
+    );
+    res.json({
+      code: 200,
+      message: "addEmploymentHIstory added successfully",
+      result: educationHIstory,
+    });
+  } catch (error) {
+    res.json({
+      code: 400,
+      message: "error",
+      error: error,
+    });
+  }
+};
+
+const getAllStatus = async (req, res) => {
+  try {
+    const statusData = await registerData.getAllStatus()
+    res.json({
+      code: 200,
+      message: "success",
+      result: statusData,
+    });
+  } catch (error) {
     res.json({
       code: 400,
       message: "error",
@@ -355,6 +489,29 @@ const friendSuggetion = async (req,res)=>{
     });
   }
 }
+
+const addLikes = async (req, res) => {
+  try {
+    var { user_id, status_id, post_id, status } = req.body;
+    var likeData = await registerData.addLikes(
+      user_id,
+      status_id,
+      post_id,
+      status
+    );
+    res.json({
+      code: 200,
+      message: "Like added successfully",
+      result: likeData,
+    });
+  } catch (error) {
+    res.json({
+      code: 400,
+      message: "error",
+      error: error,
+    });
+  }
+};
 
 module.exports = {
   register,
@@ -368,7 +525,13 @@ module.exports = {
   showFriendRequests,
   getUserDeatils,
   uploadProfile,
+  uploadHeaderProfile,
   generateprivateKey,
   givePoints,
-  friendSuggetion
+  friendSuggetion,
+  addHobbyAndInterest,
+  addEducationHIstory,
+  addEmploymentHIstory,
+  getAllStatus,
+  addLikes
 };
