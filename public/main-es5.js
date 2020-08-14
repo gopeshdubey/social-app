@@ -138,7 +138,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Network;
     });
 
-    var Network = 'https://jiviz.in';
+    var Network = 'https://jiviz.com';
     /***/
   },
 
@@ -36796,7 +36796,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.sharable = this.emailService.asObservable();
         this.loginServices = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
         this.shareLogin = this.loginServices.asObservable();
-        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_3__["connect"]('https://jiviz.in');
+        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_3__["connect"]('https://jiviz.com');
       }
 
       _createClass(LoginService, [{

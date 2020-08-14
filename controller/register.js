@@ -277,7 +277,7 @@ const uploadProfile = async (req, res) => {
       var ext = path.extname(file.originalname);
       if (ext == ".png" || ext == ".jpg") {
         let value = file.path;
-        var image = "https://jiviz.in/" + value.substring(8, value.length);
+        var image = "https://jiviz.com/" + value.substring(8, value.length);
         var upload_data = await registerData.upload_profile(id, image);
         res.json({
           code: 200,
@@ -320,7 +320,7 @@ const uploadHeaderProfile = async (req, res) => {
       var ext = path.extname(file.originalname);
       if (ext == ".png" || ext == ".jpg") {
         let value = file.path;
-        var image = "https://jiviz.in/" + value.substring(8, value.length);
+        var image = "https://jiviz.com/" + value.substring(8, value.length);
         var upload_data = await registerData.upload_header_profile(id, image);
         res.json({
           code: 200,
