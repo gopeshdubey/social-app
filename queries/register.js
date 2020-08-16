@@ -5,6 +5,7 @@ const stat = require("../Model/status");
 var mongoose = require("mongoose");
 var encryption = require("../utilities/encryption");
 const likes = require("../Model/like");
+const { resolve } = require("path");
 var ObjectId = mongoose.Types.ObjectId;
 
 var ObjectData = {};
@@ -656,6 +657,15 @@ ObjectData.getAllStatus = async () => {
             as: "user_data",
           },
         },
+        { $unwind: "$user_data" },
+        {
+          $lookup: {
+            from: "likes",
+            localField: "_id",
+            foreignField: "status_id",
+            as: "like_data",
+          },
+        },
       ])
       .sort({ _id: -1 });
     return getStatus;
@@ -693,46 +703,73 @@ ObjectData.uploadPost = async (user_id, post) => {
   }
 };
 
-ObjectData.addLikes = async (user_id, status_id, post_id, status) => {
-  try {
-    console.log('user_id', user_id);
-    var dataOfLikes = await new likes.aggregate([
-      {
-        $match: {
-          $and: [
-            { user_id: { $eq: ObjectId(user_id) } },
-            { status_id: { $eq: ObjectId(status_id) } },
-          ],
-        },
-      },
-    ]);
-    console.log("data :::::", dataOfLikes);
-    if (dataOfLikes) {
-      var updated_data = await likes.updateOne(
-        {
-          user_id: ObjectId(user_id),
-          status_id: ObjectId(status_id),
-        },
-        {
-          $set: { status: status },
+ObjectData.addLikes = (user_id, status_id, status) => {
+  return new Promise((resolve, reject) => {
+    likes.find(
+      { user_id: ObjectId(user_id), status_id: ObjectId(status_id) },
+      (err, dataOfLikes) => {
+        if (err) {
+          reject(err);
+        } else {
+          if (dataOfLikes.length > 0) {
+            likes.updateOne(
+              {
+                user_id: ObjectId(user_id),
+                status_id: ObjectId(status_id),
+              },
+              {
+                $set: { status: status },
+              },
+              (err, updated_data) => {
+                if (err) {
+                  reject(err);
+                } else {
+                  resolve(updated_data);
+                }
+              }
+            );
+          } else {
+            var like = new likes({
+              user_id: ObjectId(user_id),
+              status_id: ObjectId(status_id),
+              status: status,
+              created_at: Date.now().toString(),
+              updated_at: Date.now().toString(),
+            });
+            like.save((err, data) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(data);
+              }
+            });
+          }
         }
-      );
-      return updated_data;
-    } else {
-      var like = new likes({
+      }
+    );
+  });
+};
+
+ObjectData.getAllLikesByUserId = (user_id, status_id) => {
+  return new Promise((resolve, reject) => {
+    like.find(
+      {
         user_id: ObjectId(user_id),
         status_id: ObjectId(status_id),
-        post_id: ObjectId(post_id),
-        status: status,
-        created_at: Date.now().toString(),
-        updated_at: Date.now().toString(),
-      });
-      const likeData = await like.save();
-      return likeData;
-    }
-  } catch (error) {
-    return error;
-  }
+      },
+      (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          if (data.length > 0) {
+            resolve(data);
+          } else {
+            reject("No Data Found");
+          }
+        }
+      }
+    );
+  });
 };
 
 module.exports = ObjectData;

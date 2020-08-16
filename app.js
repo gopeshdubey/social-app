@@ -11,7 +11,7 @@ const users = require('./routes/users')
 const chats = require('./queries/chat')
 var registers = require('./queries/register')
 require('./db/db')
-const link = "http://localhost:4200"
+const link = "https://jiviz.com"
 
 app.use(cors());
 app.use(express.json());

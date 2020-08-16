@@ -492,11 +492,10 @@ const getAllStatus = async (req, res) => {
 
 const addLikes = async (req, res) => {
   try {
-    var { user_id, status_id, post_id, status } = req.body;
+    var { user_id, status_id, status } = req.body;
     var likeData = await registerData.addLikes(
       user_id,
       status_id,
-      post_id,
       status
     );
     res.json({
@@ -508,7 +507,7 @@ const addLikes = async (req, res) => {
     res.json({
       code: 400,
       message: "error",
-      error: error,
+      error: error.toString(),
     });
   }
 };
