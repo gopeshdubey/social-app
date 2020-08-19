@@ -45,7 +45,6 @@ ObjectData.login = async (email, password) => {
     Register.find({ email: email }, async (err, data) => {
       if (err) reject(err);
       else {
-        console.log("data :::::", data);
         if (data.length > 0) {
           rehash = await encryption.decryptPassword(password, data[0].password);
           if (!rehash) {

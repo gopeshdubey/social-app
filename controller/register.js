@@ -37,7 +37,6 @@ const login = async (req, res) => {
   try {
     var { email, password } = req.body;
     var dataOfLogin = await registerData.login(email, password);
-    console.log("data of login :::::", dataOfLogin);
     const token = await encryption.generateJWT(
       dataOfLogin[0]._id,
       dataOfLogin[0].first_name,

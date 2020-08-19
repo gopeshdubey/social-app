@@ -40,20 +40,21 @@ var server = app.listen(3030, () => {
 });
 
 var io = socket(server);
+var idArray = [];
 
 io.on("connection", (socket) => {
   console.log('A user has connected to the server.');
-  console.log('all connection :::::', socket.id);
-  socket.on("typing", (data) => {
-    socket.broadcast.emit("typing", data);
-  });
+  idArray.push(socket.id)
 
-  // This is the user's unique ID to be used on ng-chat as the connected user.
-  socket.emit("generatedUserId", socket.id);
+  // store all id in array
+  socket.on('get-id', (data) => {
+    io.emit('get-id', idArray)
+    console.log('id array :::::', idArray);
+  })
 
   socket.on('chat', (data) => {
     console.log('data :::::', data);
-    io.to(data.address).emit('recievedMessage', data)
+    socket.broadcast.to(data.address).emit('recievedMessage', data)
     try {
       chats.insertChat(data.user_id, data.reciever_id, data.message)
     } catch (error) {
@@ -73,5 +74,13 @@ io.on("connection", (socket) => {
     statusData.then(function(result){
       io.emit('status',result);
     })
+  });
+
+  // disconnect
+  socket.on('disconnect', function(){
+    // DELETE DATA FROM ARRAY BY NAME
+    idArray.splice(idArray.indexOf(socket.id), 1)
+    io.emit('get-id', idArray)
+    console.log(socket.id + ' user disconnected');
   });
 });
