@@ -11,7 +11,7 @@ const users = require('./routes/users')
 const chats = require('./queries/chat')
 var registers = require('./queries/register')
 require('./db/db')
-const link = "https://jiviz.com"
+const link = "https://jiviz.com/#"
 
 app.use(cors());
 app.use(express.json());
@@ -54,7 +54,7 @@ io.on("connection", (socket) => {
 
   socket.on('chat', (data) => {
     console.log('data :::::', data);
-    socket.broadcast.to(data.address).emit('recievedMessage', data)
+    io.to(data.address).emit('recievedMessage', data)
     try {
       chats.insertChat(data.user_id, data.reciever_id, data.message)
     } catch (error) {

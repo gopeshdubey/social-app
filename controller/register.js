@@ -264,6 +264,7 @@ const uploadProfile = async (req, res) => {
   try {
     const { id } = req.params;
     const file = req.file;
+    console.log('file :::::', file);
     if (!file) {
       var image = null;
       res.status(200).json({
@@ -274,10 +275,11 @@ const uploadProfile = async (req, res) => {
       });
     } else {
       var ext = path.extname(file.originalname);
-      if (ext == ".png" || ext == ".jpg") {
+      if (ext == ".png" || ext == ".jpg" || ext == ".jpeg") {
         let value = file.path;
         var image = "https://jiviz.com/" + value.substring(8, value.length);
         var upload_data = await registerData.upload_profile(id, image);
+        console.log('image data :::::', upload_data);
         res.json({
           code: 200,
           message: "success",
@@ -307,6 +309,7 @@ const uploadHeaderProfile = async (req, res) => {
   try {
     const { id } = req.params;
     const file = req.file;
+    console.log('file :::::', file);
     if (!file) {
       var image = null;
       res.status(200).json({
@@ -317,7 +320,7 @@ const uploadHeaderProfile = async (req, res) => {
       });
     } else {
       var ext = path.extname(file.originalname);
-      if (ext == ".png" || ext == ".jpg") {
+      if (ext == ".png" || ext == ".jpg" || ext == ".jpeg") {
         let value = file.path;
         var image = "https://jiviz.com/" + value.substring(8, value.length);
         var upload_data = await registerData.upload_header_profile(id, image);
